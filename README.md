@@ -1,6 +1,47 @@
-![image](https://github.com/user-attachments/assets/0df67694-f269-4ede-976a-64586f303572) ![image](https://github.com/user-attachments/assets/b4a41659-ea8b-4ae3-b8d2-0cdd0fd5eb15)
-
-![image](https://github.com/user-attachments/assets/330c9ad3-4c24-48f3-b171-7a6ad21ed125) ![image](https://github.com/user-attachments/assets/9f726ae5-7c1f-41d3-81d7-34bd0f5d61be)
++---------------------+
+|     Developer       |
+|  (Push Docker Image)|
++----------+----------+
+           |
+           v
++---------------------+
+|     Amazon ECR      |
+| (Docker Image Repo) |
++----------+----------+
+           |
+           v
++---------------------------+
+|    Amazon ECS Cluster     | <------+
+|  (Fargate or EC2 Launch)  |        |
++-----------+---------------+        |
+            |                        |
+            v                        |
+   +-------------------+       +-----+-----+
+   | ECS Service       |       | EC2 Instance|
+   | (Task Definition) |<----->| (ECS Agent) |
+   +-------------------+       +-----------+
+            |
+            v
+    +------------------+
+    |  Docker Container |
+    |   (Running App)   |
+    +------------------+
+            |
+            v
+   +-----------------------+
+   | Application Load Balancer|
+   +-----------------------+
+            |
+            v
+   +------------------+
+   |   VPC & Subnets  |
+   | (Public & Private)|
+   +------------------+
+            |
+            v
+   +------------------+
+   |   Internet Gateway|
+   +------------------+
 
 Task: Dockerize and prepare for cloud deployment 
 Main Steps: 
