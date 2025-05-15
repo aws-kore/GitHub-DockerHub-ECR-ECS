@@ -26,4 +26,5 @@ aws ecr get-login-password --region us-west-2 | docker login --username AWS --pa
 ## docker tag fastapi:latest 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi:latest
 ## docker push
 docker push 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi:latest
-## Create ECS 
+## Create ECS
+
