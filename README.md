@@ -1,56 +1,12 @@
 
-                                                                                                           +---------------------+
-|     Developer       |
-|  (Push Docker Image)|
-+----------+----------+
-           |
-           v
-+---------------------+
-|     Amazon ECR      |
-| (Docker Image Repo) |
-+----------+----------+
-           |
-           v
-+---------------------------+
-|    Amazon ECS Cluster     | <------+
-|  (Fargate or EC2 Launch)  |        |
-+-----------+---------------+        |
-            |                        |
-            v                        |
-   +-------------------+       +-----+-----+
-   | ECS Service       |       | EC2 Instance|
-   | (Task Definition) |<----->| (ECS Agent) |
-   +-------------------+       +-----------+
-            |
-            v
-    +------------------+
-    |  Docker Container |
-    |   (Running App)   |
-    +------------------+
-            |
-            v
-   +-----------------------+
-   | Application Load Balancer|
-   +-----------------------+
-            |
-            v
-   +------------------+
-   |   VPC & Subnets  |
-   | (Public & Private)|
-   +------------------+
-            |
-            v
-   +------------------+
-   |   Internet Gateway|
-   +------------------+
-
-Task: Dockerize and prepare for cloud deployment 
+                                                                           
+Task: Dockerize and prepare for cloud deployment                                                                                                                           
 Main Steps: 
 1. Create a Dockerfile for the FastAPI application. Use python 3.13
 2. Build and tag the Docker image using docker build. 
 3. Run the Docker container locally and test access to FastAPI endpoints. 
-4. Learn Docker commands: build, run, stop, logs.
-   
+4. Learn Docker commands: build, run, stop, logs.                                   ![image](https://github.com/user-attachments/assets/b558e92a-a14c-476c-9d74-66f6e753ca7c)
+
 Process --------------------------------------------------------------------
 
 ## Open VS Code - click folder - create folder name - DevOps 
