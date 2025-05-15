@@ -1,107 +1,4 @@
-![image](https://github.com/user-attachments/assets/cb8a98fc-8dd3-44ca-85c1-7f6233bf693a)
-✅ 1. Open VS Code and Set Up Project
-Open Visual Studio Code.
 
-Create a new folder named DevOps.
-
-Inside the DevOps folder, create a file named Dockerfile.
-
-✅ 2. Create and Save Dockerfile (Python 3.13 + FastAPI)
-Paste the following code in the Dockerfile:
-
-Dockerfile
-Copy
-Edit
-# Use official Python 3.13 image
-FROM python:3.13
-
-# Set working directory
-WORKDIR /app
-
-# Copy requirement file
-COPY requirements.txt .
-
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy app files
-COPY . .
-
-# Expose FastAPI port
-EXPOSE 8000
-
-# Run FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-✅ 3. Create requirements.txt
-Create a requirements.txt in the same directory and paste:
-
-nginx
-Copy
-Edit
-fastapi
-uvicorn
-(Add any other dependencies your app needs.)
-
-✅ 4. Create a Simple main.py File (If Not Present)
-Create a main.py in the same folder:
-
-python
-Copy
-Edit
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello from FastAPI running in Docker!"}
-✅ 5. Build Docker Image
-Open a terminal in VS Code (make sure you're in the DevOps folder), then run:
-
-bash
-Copy
-Edit
-docker build -t fastapi .
-✅ 6. Run Docker Container
-bash
-Copy
-Edit
-docker run -d -p 8000:8000 fastapi
-Check it at: http://localhost:8000
-
-✅ 7. Stop Container
-bash
-Copy
-Edit
-docker stop <container_id>
-To find the container ID:
-
-bash
-Copy
-Edit
-docker ps
-✅ 8. View Logs
-bash
-Copy
-Edit
-docker logs <container_id>
-✅ 9. Create ECR Repository
-bash
-Copy
-Edit
-aws ecr create-repository --repository-name fastapi --region us-west-2
-✅ 10. Authenticate Docker with ECR
-bash
-Copy
-Edit
-aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi
-✅ 11. Tag and Push Docker Image to ECR
-bash
-Copy
-Edit
-docker tag fastapi:latest 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi:latest
-
-docker push 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi:latest
 ✅ 12. Deploy with AWS CloudFormation
 You can now create an ECS Cluster using CloudFormation. Either:
 
@@ -119,7 +16,105 @@ Load Balancer (optional)
 
 IAM Roles
 
+Let me know if you'd like help writing the CloudFormation template.
 
-                                                                           
+Would you like a sample cloudformation.yaml to deploy this on ECS with Fargate?
 
 
+
+You said:
+Pls summarise everything in line by line
+
+ChatGPT said:
+Sure! Here's a line-by-line summary of all the steps:
+
+Open Visual Studio Code.
+
+Create a folder named DevOps.
+
+Inside DevOps, create a file named Dockerfile.
+
+Paste the following Dockerfile content (using Python 3.13):
+
+Dockerfile
+Copy
+Edit
+FROM python:3.13
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 8000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+Create a file named requirements.txt.
+
+Add these dependencies to it:
+
+nginx
+Copy
+Edit
+fastapi
+uvicorn
+(Optional) Create a main.py file with:
+
+python
+Copy
+Edit
+from fastapi import FastAPI
+app = FastAPI()
+@app.get("/")
+def read_root():
+    return {"message": "Hello from FastAPI running in Docker!"}
+Open terminal in DevOps folder.
+
+Build Docker image:
+
+bash
+Copy
+Edit
+docker build -t fastapi .
+Run Docker container:
+
+bash
+Copy
+Edit
+docker run -d -p 8000:8000 fastapi
+Test FastAPI at http://localhost:8000.
+
+Stop container:
+
+bash
+Copy
+Edit
+docker stop <container_id>
+View container logs:
+
+bash
+Copy
+Edit
+docker logs <container_id>
+Create an ECR repository:
+
+bash
+Copy
+Edit
+aws ecr create-repository --repository-name fastapi --region us-west-2
+Authenticate Docker to ECR:
+
+bash
+Copy
+Edit
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi
+Tag Docker image for ECR:
+
+bash
+Copy
+Edit
+docker tag fastapi:latest 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi:latest
+Push image to ECR:
+
+bash
+Copy
+Edit
+docker push 200799931813.dkr.ecr.us-west-2.amazonaws.com/fastapi:latest
+Deploy to ECS using AWS CloudFormation (via Console or .yaml/.json template).
