@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/090b836d-6ee0-4579-9b09-86b577675754)
+![image](https://github.com/user-attachments/assets/4512127d-ac39-486a-886d-e1352c1f5438)
 Task: Dockerize and prepare for cloud deployment
 Main Steps:
 1. Create a Dockerfile for the FastAPI application. Use python 3.13
