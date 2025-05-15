@@ -5,7 +5,6 @@ Main Steps:
 2. Build and tag the Docker image using docker build.
 3. Run the Docker container locally and test access to FastAPI endpoints.
 4. Learn Docker commands: build, run, stop, logs.
-   
 1. Open VS Code - click folder - create folder name - DevOps
 2. On VS Code - click file - name it Dockerfile and paste your code then save
 3. Click file - paste your code name it - requirements.txt
