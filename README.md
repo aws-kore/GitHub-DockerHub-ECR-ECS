@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/090b836d-6ee0-4579-9b09-86b577675754)
 
                                                                            
 Task: Dockerize and prepare for cloud deployment                                                                                                                           
@@ -5,7 +6,7 @@ Main Steps:
 1. Create a Dockerfile for the FastAPI application. Use python 3.13
 2. Build and tag the Docker image using docker build. 
 3. Run the Docker container locally and test access to FastAPI endpoints. 
-4. Learn Docker commands: build, run, stop, logs.                                   ![image](https://github.com/user-attachments/assets/b558e92a-a14c-476c-9d74-66f6e753ca7c)
+4. Learn Docker commands: build, run, stop, logs.                                  
 
 Process --------------------------------------------------------------------
 
