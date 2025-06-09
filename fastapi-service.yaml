@@ -1,0 +1,24 @@
+ exactly how to deploy it to Kubernetes.
+
+✅ What You Need
+Your image on Docker Hub (e.g. yourname/fastapi-app:latest)
+
+Kubernetes cluster (local with minikube, kind, or on cloud like GKE, EKS, etc.)
+
+kubectl installed and configured
+
+🧱 1. Kubernetes Deployment YAML
+yaml
+Copy
+Edit
+# fastapi-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
